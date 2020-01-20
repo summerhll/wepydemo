@@ -1,0 +1,93 @@
+<style lang="less" scoped>
+.swiper-wrapper {
+    min-height: calc(100vw * 0.4491);
+}
+.slide-image {
+    width: 750rpx;
+}
+.space {
+    margin-top: 20px;
+}
+.swiper-combination-content {
+    position: relative;
+    .dots-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 22px;
+        position: absolute;
+        bottom: 0;
+        align-items: center;
+    }
+    .dot {
+        width: 6px;
+        height: 6px;
+        background: #ffffff;
+        opacity: 0.3;
+        margin: 0;
+        margin-right: 4px;
+        border-radius: 100%;
+        &.active{
+            opacity:1;
+
+        }
+    }
+}
+</style>
+
+<template>
+    <view>
+        <view>使用组件自带的indicator-color、indicator-active-color来设置小圆点颜色</view>
+        <swiper class="swiper-wrapper" indicator-dots="true" indicator-color="white"
+                indicator-active-color="coral" autoplay = "true" circular = "true">
+            <repeat for="{{bannerList}}" key="index" item="item">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image" mode="widthFix"></image>
+                </swiper-item>
+            </repeat>
+        </swiper>
+        <view class="space"></view>
+
+        <view>自定义indicator组件，修改小圆点的颜色和大小</view>
+        <view class="swiper-combination-content">
+            <swiper class="swiper-wrapper" current="{{currentSlider}}" bindchange = "changeSlider"  autoplay = "true" circular = "true"> 
+                <repeat for="{{bannerList}}" key="index" item="item">
+                    <swiper-item>
+                        <image src="{{item}}" class="slide-image" mode="widthFix"></image>
+                    </swiper-item>
+                </repeat>
+            </swiper>
+            <view class="dots-wrapper">
+                <repeat for="{{bannerList}}" key="index" item="item">
+                    <view class="dot  {{ index == currentSlider ? 'active' : ''}}"></view>
+                </repeat>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+/**
+    swiper组件demo
+ */
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+    data =  {
+        bannerList: [ 
+           "http://img.souche.com/20191025/png/03af3cd2eab8dc1fba63a387234db103.png",
+            "http://img.souche.com/20200113/jpg/f5f30a3cff9325d95e5f6a81a56ecbd9.jpg",
+            "http://img.souche.com/20200113/jpg/0aafe779483099f003e78540ffd80d4c.jpg",
+            "http://img.souche.com/20191112/jpg/2e44ab396d4e95629a41929face31773.jpg"
+        ],
+        currentSlider: 0
+    };
+    methods = {
+         changeSlider(event){
+             this.currentSlider =  event.detail.current;
+        }
+    }
+}
+</script>
+
+
