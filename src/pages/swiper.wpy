@@ -72,7 +72,7 @@
  */
 import wepy from 'wepy'
 
-export default class Index extends wepy.page {
+export default class Swiper extends wepy.page {
     data =  {
         bannerList: [ 
            "http://img.souche.com/20191025/png/03af3cd2eab8dc1fba63a387234db103.png",

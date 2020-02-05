@@ -1,0 +1,46 @@
+<template>
+    <view class = "cover-image-content">
+        <map id="map" style="width:100%; height:300px" scale='16' latitude="32.3" longitude="118.32" show-location>
+        </map>
+        <cover-view class='cov_view'>
+            <cover-image src='//img.souche.com/f2e/6175c8b7a38dd38c176663a73b6e6163.png' bindload="loadImg" binderror="loadImgError" class='cov_image'
+            @tap = "imageTap"></cover-image>
+        </cover-view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy';
+    export default class CoverImage extends wepy.page {
+        methods = {
+            //加载图片成功
+            loadImg() {
+                console.log("加载图片...");
+            },
+            //加载图片失败
+            loadImgError() {
+                console.log("加载图片失败...");
+            },
+            //image tap 事件
+            imageTap(){
+                  console.log("imageTap...");
+            }
+        }
+    }
+</script>
+
+<style lang = "less" scoped>
+ .cover-image-content{
+        position: relative;
+
+    }
+    .cov_view{
+        position: absolute;
+        bottom: 20px;
+        left: 100px;
+        width: 40px;
+        height: 40px;
+    }
+
+
+</style>
