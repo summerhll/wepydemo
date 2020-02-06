@@ -20,7 +20,8 @@
                 'pages/index', //首页（第一项）
                 'pages/swiper', //滑动组件
                 'pages/demo', //官方示例
-                'pages/conpoments/coverImage' //coverImage 组件
+                'pages/conpoments/coverImage',//coverImage 组件
+                'pages/conpoments/scrollView' //scrollView 组件
             ],
             //设置小程序的状态栏、导航条、标题、窗口背景色
             window: {
